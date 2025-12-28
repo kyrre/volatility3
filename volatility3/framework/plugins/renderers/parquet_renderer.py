@@ -164,6 +164,9 @@ class ArrowRenderer(text_renderer.CLIRenderer):
                 if isinstance(data, renderers.LayerData):
                     data = text_renderer.LayerDataRenderer().render_bytes(data)[0]
 
+                if isinstance(data, format_hints.MultiTypeData):
+                    data = text_renderer.multitypedata_as_text(data)
+
                 node_dict[column.name] = data
                 line.append(data)
 
